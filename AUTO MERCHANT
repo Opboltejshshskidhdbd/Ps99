@@ -21,9 +21,9 @@ local DailyRedeemables = {
 }
 
 local Merchants = {
-    {"RegularMerchant";"Oasis"};
-    {"AdvancedMerchant";"Ice Rink"}
-    {"GardenMerchant";"Flower Field"}
+    {"RegularMerchant", "Oasis"},
+    {"AdvancedMerchant", "Ice Rink"},
+    {"GardenMerchant", "Flower Field"}
 }
 
 local function teleport(destination)
