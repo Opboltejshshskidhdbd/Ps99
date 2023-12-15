@@ -1,5 +1,17 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Anti afk", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "PET SIMULATOR99", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Tab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+Tab:AddButton({
+    Name = "Auto Merchant",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/AUTO%20MERCHANT"))()
+    end
+})
+
 local Tab = Window:MakeTab({
     Name = "Anti-Afk",
     Icon = "rbxassetid://4483345998",
