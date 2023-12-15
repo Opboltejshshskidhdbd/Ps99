@@ -1,11 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "PET SIMULATOR99", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
-OrionLib:MakeNotification({
-    Name = "Thank You",
-    Content = "SCRIPT MADE BY two_party_gamer on discord",
-    Image = "rbxassetid://4483345998",
-    Time = 9
-})
 local Tab = Window:MakeTab({
     Name = "Main",
     Icon = "rbxassetid://4483345998",
@@ -22,6 +16,12 @@ local Tab = Window:MakeTab({
     Name = "Anti-Afk",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
+})
+OrionLib:MakeNotification({
+    Name = "Thank You",
+    Content = "SCRIPT MADE BY two_party_gamer on discord",
+    Image = "rbxassetid://4483345998",
+    Time = 9
 })
 
 local function AntiAFK()
