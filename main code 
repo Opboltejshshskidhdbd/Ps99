@@ -11,6 +11,15 @@ Tab:AddButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/AUTO%20MERCHANT"))()
     end
 })
+Tab:AddToggle({
+    Name = "This is a toggle!",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/auto%20orb%20lootbox"))()
+        end
+    end
+})
 
 local Tab = Window:MakeTab({
     Name = "Anti-Afk",
