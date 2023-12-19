@@ -12,6 +12,12 @@ Tab:AddButton({
     end
 })
 Tab:AddButton({
+    Name = "Auto Merchant",
+    Callback = function()
+        loadstring(game:HttpGet("https://github.com/Opboltejshshskidhdbd/Ps99/blob/Opboltejshshskidhdbd-patch-1/chest%20esp"))()
+    end
+})
+Tab:AddButton({
     Name = "Auto Orb/lootbag",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/auto%20orb%20lootbox"))()
