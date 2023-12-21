@@ -12,7 +12,7 @@ Tab:AddButton({
     end
 })
 Tab:AddButton({
-    Name = "Auto Merchant",
+    Name = "Chest ESP",
     Callback = function()
         loadstring(game:HttpGet("https://github.com/Opboltejshshskidhdbd/Ps99/blob/Opboltejshshskidhdbd-patch-1/chest%20esp"))()
     end
