@@ -44,11 +44,6 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 Tab:AddLabel("Click GetKey button 🤗")
---CoolLabel:Set("Label New!")
-Tab:AddLabel("key reset in every 2 days")
---CoolLabel:Set("Label New!")
-Tab:AddLabel("Last reset 15 Dec 6:00 pm IST")
---CoolLabel:Set("Label New!")
 Tab:AddTextbox({
 	Name = "Enter Key",
 	Default = "Enter Key",
