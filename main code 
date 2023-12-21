@@ -14,7 +14,7 @@ Tab:AddButton({
 Tab:AddButton({
     Name = "Chest ESP",
     Callback = function()
-        loadstring(game:HttpGet("https://github.com/Opboltejshshskidhdbd/Ps99/blob/Opboltejshshskidhdbd-patch-1/chest%20esp"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/chest%20esp"))()
     end
 })
 Tab:AddButton({
