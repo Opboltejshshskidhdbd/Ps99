@@ -43,11 +43,11 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-Tab:AddLabel("Click GetKey button 🤗")
+Tab:AddLabel("Click GetKey button 🥰")
 Tab:AddTextbox({
 	Name = "Enter Key",
 	Default = "Enter Key",
-	TextDisappear = false,
+	TextDisappear = true,
 	Callback = function(Value)
         _G.KeyInput = Value
 	end	  
