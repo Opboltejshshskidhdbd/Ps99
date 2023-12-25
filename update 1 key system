@@ -15,7 +15,7 @@ _G.Key = "u5kr4kfy6jg5k9go8f" -- You Put Your Key Here
 _G.KeyInput = "string"
 
 function MakeScriptHub()
-loadstring(game:HttpGet(("https://pastebin.com/raw/fmEcH6r4"), true))() -- You Put Your Script Here
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/main%20code%20"), true))() -- You Put Your Script Here
 
 end
 
@@ -47,7 +47,7 @@ Tab:AddLabel("Click GetKey button 🥰")
 Tab:AddTextbox({
 	Name = "Enter Key",
 	Default = "Enter Key",
-	TextDisappear = true,
+	TextDisappear = false,
 	Callback = function(Value)
         _G.KeyInput = Value
 	end	  
