@@ -6,7 +6,7 @@ local Window = OrionLib:MakeWindow({Name = "KeySystem", HidePremium = true, Save
 
 OrionLib:MakeNotification({
 	Name = "welcome 🤗",
-	Content = "Welcome in My Fist Script",
+	Content = "Welcome in My First Script",
 	Image = "rbxassetid://4483345998",
 	Time = 5
 })
