@@ -1,0 +1,40 @@
+local function rainbowColor(duration, textLabel)
+    local startTime = tick()
+    while true do
+        local currentTime = tick() - startTime
+        local hue = (currentTime % duration) / duration
+        textLabel.TextColor3 = Color3.fromHSV(hue, 1, 1)
+        wait(0.1) -- Adjust the speed of color change by modifying the wait time
+    end
+end
+
+local function displayMessage(message, duration)
+    -- Create a ScreenGui
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+    -- Create a TextLabel
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Parent = screenGui
+    textLabel.BackgroundColor3 = Color3.new(0, 0, 0) -- Set background color
+    textLabel.Size = UDim2.new(0, 360, 0, 30) -- Set size
+    textLabel.Position = UDim2.new(0.5, -150, 0.8, -25) -- Set position
+    textLabel.TextSize = 8 -- Set text size
+    textLabel.Text = message -- Set message text
+    textLabel.ZIndex = 2 -- Set ZIndex to make it appear above other GUI elements
+
+    -- Start rainbow color effect
+    coroutine.wrap(rainbowColor)(duration, textLabel)
+
+    -- Display the message for the specified duration
+    wait(duration or 15) -- Wait for the specified duration (default: 15 seconds)
+
+    -- Remove the message from the screen after the duration
+    textLabel:Destroy()
+end
+
+-- Usage example:
+local message = "Auto Orb/Lootbox No visual made by TWOPARTYGAMER"
+local displayDuration = 12 -- Duration in seconds
+
+displayMessage(message, displayDuration)
