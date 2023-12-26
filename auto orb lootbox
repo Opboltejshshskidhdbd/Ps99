@@ -1,18 +1,43 @@
-local a = game.Players.LocalPlayer.Character.HumanoidRootPart
-local b = workspace.__THINGS
+local player = game.Players.LocalPlayer
+local character = player.Character
+local humanoidRootPart = character and character:WaitForChild("HumanoidRootPart")
+local things = workspace.__THINGS
 
-local function get()
-    local cf = a.CFrame
-    for i,v in pairs(b.Lootbags:GetChildren()) do
-    v:PivotTo(cf)
-    end
-    for i,v in pairs(b.Orbs:GetChildren()) do
-    v:PivotTo(cf)
+local function moveObjects()
+    if humanoidRootPart then
+        local playerCFrame = humanoidRootPart.CFrame
 
+        for i, v in pairs(things.Lootbags:GetChildren()) do
+            v:PivotTo(playerCFrame)
+        end
+
+        for _, orb in ipairs(things.Orbs:GetChildren()) do
+            if orb:IsA("BasePart") then
+                orb.Transparency = 1 -- Make the orb invisible
+                orb.CanCollide = false -- Disable collision during teleportation
+                orb.CFrame = playerCFrame
+                -- You can optionally destroy the orb after teleportation if desired
+            end
+        end
     end
 end
 
+-- Assuming the collection process is handled elsewhere in the game,
+-- let's add a function to handle the collected orbs
 
-while task.wait(0.5) do
-get()
+local function handleCollectedOrbs()
+    for _, orb in ipairs(things.Orbs:GetChildren()) do
+        if orb:IsA("BasePart") and orb.Transparency == 1 then
+            orb:Destroy() -- Destroy the collected orb
+            -- Alternatively, you can move the orb to a different location far from the player's sight
+            -- orb.CFrame = CFrame.new(Vector3.new(0, -1000, 0)) -- Move the orb to a distant location
+        end
+    end
+end
+
+-- Continuously move objects and handle collected orbs
+while true do
+    moveObjects()
+    handleCollectedOrbs()
+    wait(0.1)
 end
