@@ -20,14 +20,7 @@ Tab:AddButton({
 Tab:AddButton({
     Name = "Auto Orb/lootbag",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/Credit"))() -- Execute the updated link
-        
-        -- Add a delay or wait for the first code to execute before loading the second code
-        wait(1) -- Adjust this delay according to the time needed for the first code to complete
-        
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/auto%20orb%20lootbox"))() -- Execute the second code
-    end
-})
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/main/final%20test"))()
 local Tab = Window:MakeTab({
     Name = "Anti-Afk",
     Icon = "rbxassetid://4483345998",
