@@ -13,7 +13,7 @@ local function moveObjects()
 
         for _, orb in ipairs(things.Orbs:GetChildren()) do
             if orb:IsA("BasePart") then
-                orb.Transparency = 0 -- Make the orb invisible
+                orb.Transparency = 1 -- Make the orb invisible
                 orb.CanCollide = false -- Disable collision during teleportation
                 orb.CFrame = playerCFrame
                 -- You can optionally destroy the orb after teleportation if desired
