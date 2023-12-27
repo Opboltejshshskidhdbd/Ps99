@@ -39,5 +39,5 @@ end
 while true do
     moveObjects()
     handleCollectedOrbs()
-    wait(0.5)
+    wait(0.1)
 end
