@@ -21,6 +21,8 @@ Tab:AddButton({
     Name = "Auto Orb/lootbag",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/main/final%20test"))()
+    end
+})
 local Tab = Window:MakeTab({
     Name = "Anti-Afk",
     Icon = "rbxassetid://4483345998",
