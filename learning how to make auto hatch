@@ -1,5 +1,9 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/Orion%20Library%20(moveable)')))()
 local Window = OrionLib:MakeWindow({Name = "Orion", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+--Values
+_G.autoHatch = True
+_G.selectEgg = "Cracked Egg"
 local Tab = Window:MakeTab({
 	Name = "AutoHatch",
 	Icon = "rbxassetid://4483345998",
