@@ -4,15 +4,34 @@ local Window = OrionLib:MakeWindow({Name = "Orion", HidePremium = false, SaveCon
 --Values
 _G.autoHatch = True
 _G.selectEgg = "Cracked Egg"
+
+
+--function
+
+function autoHatch
+    while _G.autoHatch == True do
+      
+end
+--Tabs
 local Tab = Window:MakeTab({
 	Name = "AutoHatch",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+Tab:AddDropdown({
+	Name = "Dropdown",
+	Default = "Cracked Egg",
+	Options = {"Cracked Egg", "Teddy Egg"},
+	Callback = function(Value)
+     _G.selectEgg = Value
+		  print(_G.selectEgg)
+	end    
+})
 Tab:AddToggle({
 	Name = "AutoHatch",
 	Default = false,
 	Callback = function(Value)
-		print(Value)
+	    _G.autoHatch = Value
+     autoHatch()
 	end    
 })
