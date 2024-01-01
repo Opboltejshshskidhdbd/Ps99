@@ -1,7 +1,14 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/Orion%20Library%20(moveable)')))()
 local Window = OrionLib:MakeWindow({Name = "Orion", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local Tab = Window:MakeTab({
-	Name = "Tab 1",
+	Name = "AutoHatch",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
+})
+Tab:AddToggle({
+	Name = "AutoHatch",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
 })
