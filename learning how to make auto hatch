@@ -14,8 +14,7 @@ local function autoHatch()
             [2] = _G.hatchAmount -- Use the selected hatch amount from the global variable
         }
 
-
-game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("AutoHatch_Enable"):FireServer(unpack(args))     
+        game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Eggs_RequestPurchase"):InvokeServer(unpack(args))
 
         wait(.0000000000000000000000000000000000000000001) -- Wait for some time before purchasing the next egg (adjust as needed)
     end
