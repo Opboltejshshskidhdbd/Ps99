@@ -1,4 +1,3 @@
-if game.PlaceId == 8737899170 then
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/Orion%20Library%20(moveable)')))()
 local Window = OrionLib:MakeWindow({Name = "Orion", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
@@ -31,7 +30,7 @@ local Tab = Window:MakeTab({
 Tab:AddDropdown({
     Name = "Egg Type",
     Default = "Cracked Egg",
-    Options = {"Cracked Egg", "Teddy Egg"},
+    Options = {"Cracked Egg", "Spotted Egg", "Paw Egg", "Grass Egg", "Wood Egg", "Pumpkin Egg", "Hive Egg","Acorn Egg", "Blossom Egg", "Corgi Egg", "Cat Egg", "Dog Egg", "Dragon Egg", "Rock Egg", "Geode Egg", "Hut Egg", "Grave Egg", "Spike Egg", "Sprout Egg", "Mushroom Egg", "Spirit Egg", "Crimson Egg", "Overgrown Egg", "Mossy Egg", "jungle Egg", "Sandcastle Egg", "Palm Tree Egg", "Beach Ball Egg", "Coral Egg", "Anchor Egg", "Atlantis Egg", "Tropical Egg", "Beach Egg", "Coconut Egg", "Tiki Egg", "Sand Bucket Egg", "Sunny Egg", "Pirate Egg", "Ship Egg", "Zebra Egg", "Cheetah Egg", "Cactus Egg", "Fossil Egg", "Egyptian Egg", "Sandstone Egg", "Cowboy Egg", "Canyon Egg", "Hyena Egg", "Melted Egg", "Snow Egg", "Icicle Egg", "Snowman Egg", "Yeti Egg", "Ice Egg", "Thawed Egg", "Magma Egg", "Obsidian Egg", "Volcano Egg", "Bone Egg", "Tentacle Egg", "Hell Egg", "Metal Egg", "Sakura Egg", "Ninja Egg", "Lantern Egg", "Bonsai Egg", "Garden Egg", "Pixie Egg", "Pedal Egg", "Crowned Egg", "Royal Egg", "Dandelion Egg", "Colorful Egg", "Colorful Geode Egg", "Colorful Mosaic Egg", "Frosted Geode Egg", "Ice Sculpture Egg", "Hot Cocoa Egg", "Ice Castle Egg", "Teddy Egg", "Firefly Egg", "Golden Brick Egg", "Cobblestone Egg", "Ruins Egg", "Runic Egg", "Wizard Egg", "Witch Egg"},
     Callback = function(Value)
         _G.selectEgg = Value
         print(_G.selectEgg)
@@ -41,7 +40,7 @@ Tab:AddDropdown({
 Tab:AddDropdown({
     Name = "Hatch Amount",
     Default = tostring(_G.hatchAmount),
-    Options = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100"}, -- Example hatch amounts you can adjust or expand
+    Options = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99"},
     Callback = function(Value)
         _G.hatchAmount = tonumber(Value)
         print(_G.hatchAmount)
