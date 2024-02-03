@@ -1,0 +1,262 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Opboltejshshskidhdbd/Ps99/Opboltejshshskidhdbd-patch-1/Orion%20Library%20(moveable)')))()
+local Window = OrionLib:MakeWindow({ Name = "IDK HUB", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest" })
+
+-- Values
+_G.autoTap = true
+_G.autoHatch = true
+_G.autoBall = true -- New global variable for AutoBall toggle
+_G.autoRebirth = false -- Initial value for AutoRebirth
+_G.selectEgg = "Purgatory Basic Egg"
+_G.hatchAmount = 1
+_G.ballIndex = 1 -- Initial default value
+_G.tapType = "1_1"  -- New global variable for Tap Type
+
+-- Auto Tap Function
+local function autoTap()
+    while _G.autoTap do
+        local tapTypeMapping = {
+            ["W1 Common"] = "1_1",
+            ["W1 Uncommon"] = "1_2",
+            ["W1 Rare"] = "1_3",
+            ["W1 Epic"] = "1_4",
+            ["W1 Legendary"] = "1_5",
+            ["W1 Mytical"] = "1_6",
+            ["W2 Common"] = "2_1",
+            ["W2 Uncommon"] = "2_2",
+            ["W2 Rare"] = "2_3",
+            ["W2 Epic"] = "2_4",
+            ["W2 Legendary"] = "2_5",
+            ["W2 Mythical"] = "2_6",
+            ["W3 Common"] = "3_1",
+            ["W3 Uncommon"] = "3_2",
+            ["W3 Rare"] = "3_3",
+            ["W3 Epic"] = "3_4",
+            ["W3 Legendary"] = "3_5",
+            ["W3 Mythical"] = "3_6",
+            ["W4 Common"] = "4_1",
+            ["W4 Uncommon"] = "4_2",
+            ["W4 Rare"] = "4_3",
+            ["W4 Epic"] = "4_4",
+            ["W4 Legendary"] = "4_5",
+            ["W4 Mystical"] = "4_6",
+            ["W5 Common"] = "5_1",
+            ["W5 Uncommon"] = "5_2",
+            ["W5 Rare"] = "5_3",
+            ["W5 Epic"] = "5_4",
+            ["W5 Legendary"] = "5_5",
+            ["W5 Mystical"] = "5_6",
+            -- Add more mappings as needed
+        }
+
+        local selectedTapType = tapTypeMapping[_G.tapType] or "1_1"
+
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character:FindFirstChild(selectedTapType)
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Game"):WaitForChild("[C-S]PlayerClick"):FireServer(unpack(args))
+        wait(.0000000000001) -- Add a delay here if needed
+    end
+end
+
+-- Auto Hatch Function
+local function autoHatch()
+    while _G.autoHatch do
+        local args = {
+            [1] = _G.selectEgg,
+            [2] = _G.hatchAmount
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Function"):WaitForChild("Luck"):WaitForChild("[C-S]DoLuck"):InvokeServer(unpack(args))
+        wait(.00000000001) -- Add a delay here if needed
+    end
+end
+
+-- Auto Ball Function
+local function autoBall()
+    while _G.autoBall do
+        local args = {
+            [1] = _G.ballIndex
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Game"):WaitForChild("[C-S]PlayerTryBall"):FireServer(unpack(args))
+        wait(1) -- Add a delay here if needed
+    end
+end
+
+-- Auto Rebirth Function
+local function autoRebirth()
+    while _G.autoRebirth do
+        local rebirthObject = game:GetService("Players").LocalPlayer:FindFirstChild("Rebirth") -- Replace "Rebirth" with the actual object name for rebirth
+        if rebirthObject then
+            -- Trigger the rebirth action here; the exact action depends on your game's mechanics
+            rebirthObject:Invoke() -- Example: Invoking a rebirth object
+        end
+        wait(1) -- Adjust delay as needed before checking for rebirth again
+    end
+end
+
+-- Tabs
+OrionLib:MakeNotification({
+    Name = "Thank You",
+    Content = "SCRIPT MADE BY two_party_gamer on discord",
+    Image = "rbxassetid://4483345998",
+    Time = 9
+})
+
+local MainTab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+MainTab:AddToggle({
+    Name = "AutoTap",
+    Default = false,
+    Callback = function(Value)
+        _G.autoTap = Value
+        if Value then
+            autoTap()
+        end
+    end
+})
+
+local autoWinLoop
+
+MainTab:AddToggle({
+    Name = "Auto Win",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            autoWinLoop = true
+            while autoWinLoop do
+                local args = {
+                    [1] = true,
+                    [2] = 0.9873561392410891
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("Event"):WaitForChild("Game"):WaitForChild("[C-S]PlayerEnd"):FireServer(unpack(args))
+                wait(.00000000000000000000000001)  -- Add a delay here if needed
+            end
+        else
+            autoWinLoop = false
+        end
+    end
+})
+
+MainTab:AddDropdown({
+    Name = "Select Dumble",
+    Default = "W1 Common",
+    Options = {"W1 Common","W1 Uncommon","W1 Rare","W1 Epic","W1 Legendary","W1 Mythical","W2 Common","W2 Uncommon","W2 Rare","W2 Epic","W2 Legendary","W2 Mythical","W3 Common","W3 Uncommon","W3 Rare","W3 Epic","W3 Legendary","W3 Mythical","W4 Common","W4 Uncommon","W4 Rare","W4 Epic","W4 Legendary","W4 Mythical","W5 Common","W5 Uncommon","W5 Rare","W5 Epic","W5 Legendary","W5 Mythical"},
+    Callback = function(Value)
+        _G.tapType = Value
+        print("Selected Tap Type: " .. Value)
+    end
+})
+
+MainTab:AddDropdown({
+    Name = "Select Ball",
+    Default = "Purgatory Ball",
+    Options = { "Purgatory Ball", "Atlantis Ball","Temple Ball","Pyramid","Haven"},
+    Callback = function(Value)
+        if Value == "Purgatory Ball" then
+            _G.ballIndex = 1
+        elseif Value == "Atlantis Ball" then
+            _G.ballIndex = 2
+        elseif Value == "Temple Ball" then
+            _G.ballIndex = 3
+        elseif Value == "Pyramid Ball" then
+            _G.ballIndex = 4
+        elseif Value == "Haven Ball" then
+            _G.ballIndex = 5
+        end
+        print("Selected Ball Type: " .. Value .. ", Index: " .. _G.ballIndex)
+    end
+})
+
+MainTab:AddToggle({
+    Name = "AutoBall",
+    Default = false,
+    Callback = function(Value)
+        _G.autoBall = Value
+        if Value then
+            autoBall()
+        end
+    end
+})
+
+MainTab:AddToggle({
+    Name = "Auto Rebirth",
+    Default = false,
+    Callback = function(Value)
+        _G.autoRebirth = Value
+        if Value then
+            autoRebirth()
+        end
+    end
+})
+
+local HatchTab = Window:MakeTab({
+    Name = "AutoHatch",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local eggTypeDropdown = HatchTab:AddDropdown({
+    Name = "Select Egg",
+    Default = "Purgatory Basic Egg",
+    Options = {"Christmas Egg 1","Christmas Egg 2","Christmas Egg 3","Purgatory Basic Egg","Purgatory Egg","Devil Egg","Atlantis Basic Egg","Ice Egg","Ocean Egg","Atlantes Egg","Temple Basic Egg","Dominus Egg","Sacred Egg","Athena Egg"},
+    Callback = function(Value)
+        if Value == "Purgatory Basic Egg" then
+            _G.selectEgg = "Egg1"
+        elseif Value == "Purgatory Egg" then
+            _G.selectEgg = "Egg2"
+        elseif Value == "Devil Egg" then
+            _G.selectEgg = "Egg3"
+        elseif Value == "Atlantis Basic Egg" then
+            _G.selectEgg = "Egg4"
+        elseif Value == "Ice Egg" then
+            _G.selectEgg = "Egg5"
+        elseif Value == "Ocean Egg" then
+            _G.selectEgg = "Egg6"
+        elseif Value == "Atlantes Egg" then
+            _G.selectEgg = "Egg7"
+        elseif Value == "Temple Basic Egg" then
+            _G.selectEgg = "Egg8"
+        elseif Value == "Dominus Egg" then
+            _G.selectEgg = "Egg9"
+        elseif Value == "Sacred Egg" then
+            _G.selectEgg = "Egg10"
+        elseif Value == "Athena Egg" then
+            _G.selectEgg = "Egg11"
+        elseif Value == "IDK EGG NAME" then
+            _G.selectEgg = "Egg12"
+        if Value == "Christmas Egg 1" then
+            _G.selectEgg = "Christmas1"
+        if Value == "Christmas Egg 2" then
+            _G.selectEgg = "Christmas2"
+        if Value == "Christmas Egg 3" then
+            _G.selectEgg = "Christmas3"
+        end
+        print("Selected Egg Type: " .. Value .. ", Index: " .. _G.selectEgg)
+    end
+})
+
+HatchTab:AddDropdown({
+    Name = "Hatch Amount",
+    Default = tostring(_G.hatchAmount),
+    Options = { "1","2", "3","4","5","6"},
+    Callback = function(Value)
+        _G.hatchAmount = tonumber(Value)
+        print(_G.hatchAmount)
+    end
+})
+
+HatchTab:AddToggle({
+    Name = "AutoHatch",
+    Default = false,
+    Callback = function(Value)
+        _G.autoHatch = Value
+        if Value then
+            autoHatch()
+        end
+    end
+})
+
+OrionLib:Init()
