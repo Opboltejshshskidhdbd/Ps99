@@ -9,26 +9,30 @@ function UI:createMain(title)
     local ContentFrame = Instance.new("Frame")
     local UIListLayout = Instance.new("UIListLayout")
     local TitleLabel = Instance.new("TextLabel")
+    local UICorner = Instance.new("UICorner")
 
     ScreenGui.Parent = game.CoreGui  -- Use CoreGui for exploit purposes
     ScreenGui.ResetOnSpawn = false
 
     MainFrame.Parent = ScreenGui
-    MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    MainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
     MainFrame.Position = UDim2.new(0.05, 0, 0.27, 0)
     MainFrame.Size = UDim2.new(0, 600, 0, 400)
+    MainFrame.ClipsDescendants = true
 
     TabsContainer.Parent = MainFrame
-    TabsContainer.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    TabsContainer.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     TabsContainer.BorderSizePixel = 0
-    TabsContainer.Position = UDim2.new(0.02, 0, 0.05, 0)
-    TabsContainer.Size = UDim2.new(0, 100, 0, 370)
+    TabsContainer.Position = UDim2.new(0.01, 0, 0.05, 0)
+    TabsContainer.Size = UDim2.new(0, 120, 0, 370)
+    TabsContainer.ClipsDescendants = true
 
     ContentFrame.Parent = MainFrame
-    ContentFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    ContentFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
     ContentFrame.BorderSizePixel = 0
-    ContentFrame.Position = UDim2.new(0.2, 0, 0.05, 0)
-    ContentFrame.Size = UDim2.new(0, 450, 0, 370)
+    ContentFrame.Position = UDim2.new(0.22, 0, 0.05, 0)
+    ContentFrame.Size = UDim2.new(0, 460, 0, 370)
+    ContentFrame.ClipsDescendants = true
 
     UIListLayout.Parent = TabsContainer
     UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -36,18 +40,21 @@ function UI:createMain(title)
     UIListLayout.Padding = UDim.new(0, 10)
 
     TitleLabel.Parent = MainFrame
-    TitleLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TitleLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
     TitleLabel.BackgroundTransparency = 1.0
     TitleLabel.LayoutOrder = 5
-    TitleLabel.Position = UDim2.new(0.15, 0, 0.02, 0)
+    TitleLabel.Position = UDim2.new(0.01, 0, 0.02, 0)
     TitleLabel.Size = UDim2.new(0, 275, 0, 40)
     TitleLabel.ZIndex = 2
     TitleLabel.Font = Enum.Font.GothamBold
     TitleLabel.Text = title
-    TitleLabel.TextColor3 = Color3.fromRGB(232, 232, 232)
+    TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TitleLabel.TextScaled = true
     TitleLabel.TextSize = 14.0
     TitleLabel.TextWrapped = true
+
+    UICorner.CornerRadius = UDim.new(0.05, 0)
+    UICorner.Parent = MainFrame
 
     local function enableDragging()
         local script = Instance.new('LocalScript', MainFrame)
@@ -62,9 +69,9 @@ function UI:createMain(title)
     function MainAPI:createTab(name, iconId)
         local TabButton = Instance.new("TextButton")
         TabButton.Parent = TabsContainer
-        TabButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+        TabButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
         TabButton.BorderSizePixel = 0
-        TabButton.Size = UDim2.new(0, 80, 0, 50)
+        TabButton.Size = UDim2.new(0, 100, 0, 50)
         TabButton.Font = Enum.Font.SourceSansBold
         TabButton.Text = name
         TabButton.TextColor3 = Color3.fromRGB(235, 235, 235)
@@ -72,12 +79,17 @@ function UI:createMain(title)
         TabButton.TextSize = 14.0
         TabButton.TextWrapped = true
 
+        local UICornerTab = Instance.new("UICorner")
+        UICornerTab.CornerRadius = UDim.new(0.1, 0)
+        UICornerTab.Parent = TabButton
+
         local TabFrame = Instance.new("Frame")
         TabFrame.Parent = ContentFrame
-        TabFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+        TabFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
         TabFrame.BorderSizePixel = 0
-        TabFrame.Size = UDim2.new(0, 450, 0, 370)
+        TabFrame.Size = UDim2.new(0, 460, 0, 370)
         TabFrame.Visible = false
+        TabFrame.ClipsDescendants = true
 
         local Icon = Instance.new("ImageLabel")
         Icon.Parent = TabFrame
@@ -101,7 +113,7 @@ function UI:createMain(title)
         function TabAPI:createButton(name, callback)
             local Button = Instance.new("TextButton")
             Button.Parent = TabFrame
-            Button.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+            Button.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
             Button.BorderSizePixel = 0
             Button.Size = UDim2.new(0, 200, 0, 50)
             Button.Font = Enum.Font.SourceSansBold
@@ -110,6 +122,10 @@ function UI:createMain(title)
             Button.TextScaled = true
             Button.TextSize = 14.0
             Button.TextWrapped = true
+
+            local UICornerButton = Instance.new("UICorner")
+            UICornerButton.CornerRadius = UDim.new(0.1, 0)
+            UICornerButton.Parent = Button
 
             Button.MouseButton1Click:Connect(function()
                 local success, errorMsg = pcall(callback)
@@ -126,9 +142,13 @@ function UI:createMain(title)
             local ToggleState = default or false
 
             ToggleFrame.Parent = TabFrame
-            ToggleFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+            ToggleFrame.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
             ToggleFrame.BorderSizePixel = 0
             ToggleFrame.Size = UDim2.new(0, 200, 0, 50)
+
+            local UICornerToggleFrame = Instance.new("UICorner")
+            UICornerToggleFrame.CornerRadius = UDim.new(0.1, 0)
+            UICornerToggleFrame.Parent = ToggleFrame
 
             ToggleButton.Parent = ToggleFrame
             ToggleButton.BackgroundColor3 = ToggleState and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
